@@ -11,6 +11,8 @@
 
 function maxChar(str) {
   const charMap = {};
+  let max = 0;
+  let maxChar = '';
   for (let char of str) {
     // if charMap[char] already exists, increment
     if (charMap[char]) {
@@ -21,7 +23,13 @@ function maxChar(str) {
       charMap[char] = 1;
     }
   }
-  console.log(charMap);
+  for (let char in charMap) {
+    if (charMap[char] > max) {
+      max = charMap[char];
+      maxChar = char;
+    }
+  }
+  return maxChar;
 }
 
 module.exports = maxChar;

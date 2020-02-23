@@ -8,23 +8,38 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
+// function anagrams(stringA, stringB) {
+//   const aCharMap = buildCharMap(stringA);
+//   const bCharMap = buildCharMap(stringB);
+//   // Object.keys() returns an array of keys. If the lengths of the strings
+//   // do not match (or numbers of keys) then we can just return false
+//   // because we know it can't be an anagram
+//   if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+//     return false;
+//   }
+//   // Notice when you are iterating over an object you use "in" vs "or"
+//   for(let char in aCharMap) {
+//     if(aCharMap[char] !== bCharMap[char]) {
+//       return false;
+//     }
+//     return true;
+//   }
+// }
+//
+// function buildCharMap(str) {
+//   const charMap = {};
+//   for (let char of str.replace(/[^\w]/g).toLowerCase()) {
+//     charMap[char] = charMap[char] + 1 || 1;
+//   }
+//   return charMap;
+// }
+
 function anagrams(stringA, stringB) {
-  const aCharMap = buildCharMap(stringA);
-  const bCharMap = buildCharMap(stringB);
-  // Object.keys() returns an array of keys. If the lengths of the strings
-  // do not match (or numbers of keys) then we can just return false
-  // because we know it can't be an anagram
-  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
-    return false;
-  }
+  return cleanString(stringA) === cleanString(stringB);
 }
 
-function buildCharMap(str) {
-  const charMap = {};
-  for (let char in str.replace(/[^\w]/g).toLowerCase()) {
-    charMap[char] = charMap[char] + 1 || 1;
-  }
-  return charMap;
+function cleanString(str) {
+  return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
 }
 
 module.exports = anagrams;

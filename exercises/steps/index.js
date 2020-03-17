@@ -17,6 +17,45 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+
+// function steps (n, row = 0, stair = '') {
+//   if(n === row) {
+//     return;
+//   }
+//   if(n === stair.length) {
+//     console.log(stair);
+//     return steps(n, row + 1);
+//   }
+//   if(stair.length <= row) {
+//     stair += '#';
+//   } else {
+//     stair += ' ';
+//   }
+//   steps(n, row, stair);
+// }
+
+// Pseudo code:
+// From 0 to n (iteratie through rows)
+//   Create an empty string 'stair'
+//   From 0 to n (iterate through cols)
+//     If current col is <= row
+//       Add '#' to 'stair'
+//     Else
+//       Add ' ' to 'stair'
+//   Console.log(stair)
+function steps(n) {
+  for(let row = 0; row < n; row++) {
+    let stair = '';
+
+    for(let col = 0; col < n; col++) {
+      if(col <= row) {
+        stair += '#';
+      } else {
+        stair += ' ';
+      }
+    }
+    console.log(stair);
+  }
+}
 
 module.exports = steps;

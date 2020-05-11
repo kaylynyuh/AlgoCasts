@@ -43,6 +43,7 @@
 //     Else
 //       Add ' ' to 'stair'
 //   Console.log(stair)
+// This solution has runtime complexity of O(n)2 or N^2 (quadratic)
 function steps(n) {
   for(let row = 0; row < n; row++) {
     let stair = '';

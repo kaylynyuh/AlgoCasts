@@ -15,7 +15,7 @@
 //   return str.split('').reverse().join('');
 // }
 
-// solution #2:
+// solution #2: O(n)
 // loop through all the characters
 // create a an string called "reversed"
 // for each character in the str, add it to the start of "reversed"

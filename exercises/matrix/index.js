@@ -15,6 +15,75 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
-function matrix(n) {}
+// SIMPLE MATRIX SOLUTION:
+// This function will print out an n x n matrix,
+// look below for spiral specific matrix solution
+// function matrix(n) {
+//   const results = [];
+//   for (let i = 0; i < n; i++) {
+//     results.push([]);
+//   }
+//   let counter = 1;
+//   let startCol = 0;
+//   let endCol = n - 1;
+//   let startRow = 0;
+//   let endRow = n - 1;
+//   while (startCol <= endCol && startRow <= endRow) {
+//     // top row
+//     // if n = 3, then results[startRow][i] will put a 1 at
+//     // startCol[0] and startRow[0]
+//     for (let i = startCol; i <= endCol; i++) {
+//       results[startRow][i] = counter;
+//       counter++;
+//     }
+//     startRow++;
+//   }
+//   return results;
+// }
+
+function matrix(n) {
+  const results = [];
+  for (let i = 0; i < n; i++) {
+    results.push([]);
+  }
+  let counter = 1;
+  let startCol = 0;
+  let endCol = n - 1;
+  let startRow = 0;
+  let endRow = n - 1;
+  while (startCol <= endCol && startRow <= endRow) {
+    // TOP ROW
+    // if n = 3, then results[startRow][i] will put a 1 at
+    // startCol[0] and startRow[0]
+    for (let i = startCol; i <= endCol; i++) {
+      results[startRow][i] = counter;
+      counter++;
+    }
+    startRow++;
+    // RIGHT COLUMN
+    // if n = 3, then endCol is going to be equal to 2. so
+    // the first time around, results[i][endRow] will = results[1][2]
+    for (let i = startRow; i <= endRow; i++) {
+      results[i][endRow] = counter;
+      // incrementing the counter will put as at results [2][2]
+      counter++;
+    }
+    endCol--;
+    // BOTTOM ROW
+    // start decrementing
+    for (let i = endCol; i >= startCol; i--) {
+      results[endRow][i] = counter;
+      counter++;
+    }
+    endRow--;
+    // START COLUMN
+    for (let i = endRow; i >= startRow; i--) {
+      results[i][startCol] = counter;
+      counter++;
+    };
+    startCol++;
+  };
+  return results;
+}
 
 module.exports = matrix;

@@ -11,7 +11,7 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-// Steps to solve:
+// PsuedoCode Solution 1:
 // Create an empty array to hold chunks called "chunked"
 // For each element in the unchunked array:
 // - retrieve the last element in chunked

@@ -45,3 +45,12 @@ function reverse(str) {
 }
 
 module.exports = reverse;
+
+
+// *** STRETCH GOAL, solve in python: *** //
+// def reverse(text):
+//   if(text.length === 0) return;
+//   reversed = ''
+//   for char in text:
+//     reversed = char + reversed
+//   return reversed

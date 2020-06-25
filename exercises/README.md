@@ -48,6 +48,13 @@
 * Ways of organizing information with optimal "runtime complexity" for adding, updating, or removing records.
 
 ## Queue
-### An ordered list of elements where an element is inserted at the end of the queue and is removed from the front of the queue.
+### An ordered list of elements where an element is inserted at the end of the queue and is removed from the front of the queue. FIFO.
 * add to queue (enqueue) ---> array.unshift()
 * remove from queue (dequeue) ---> array.pop()
+* peek ---> return the "top" record without returning it
+
+## Stack
+### A list of elements that are accessible only from only one end of the list. LIFO.
+* push ---> add a record to the stack
+* pop ---> remove a record from the stack
+* peek ---> return the "top" record without returning it

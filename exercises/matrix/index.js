@@ -59,7 +59,7 @@ function matrix(n) {
       results[startRow][i] = counter;
       counter++;
     }
-    startRow++;
+    startRow++; // get to the next row
     // RIGHT COLUMN
     // if n = 3, then endCol is going to be equal to 2. so
     // the first time around, results[i][endRow] will = results[1][2]
@@ -70,7 +70,7 @@ function matrix(n) {
     }
     endCol--;
     // BOTTOM ROW
-    // start decrementing
+    // start decrementing to go in the other direction
     for (let i = endCol; i >= startCol; i--) {
       results[endRow][i] = counter;
       counter++;

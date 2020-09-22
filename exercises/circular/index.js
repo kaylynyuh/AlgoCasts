@@ -11,6 +11,9 @@
 //   b.next = c;
 //   c.next = b;
 //   circular(l) // true
+// With a circular list, there is no tail node,
+// there is only a "last" node that points to a 
+// a previous node from the list
 
 function circular(list) {}
 

@@ -47,10 +47,28 @@ function reverse(str) {
 module.exports = reverse;
 
 
-// *** STRETCH GOAL, solve in python: *** //
+// *** STRETCH GOALS *** //
+
+// solved in python:
 // def reverse(text):
 //   if(text.length === 0) return;
 //   reversed = ''
 //   for char in text:
 //     reversed = char + reversed
 //   return reversed
+
+// reversed in place with an arrayOfChars as an argument
+// function reverse(arrayOfChars) {
+//   let leftIndex = arrayOfChars[0];
+//   let rightIndex = arrayOfChars.length - 1;
+
+//   while (leftIndex < rightIndex) {
+//     // Swap characters
+//     const temp = arrayOfChars[leftIndex];
+//     arrayOfChars[leftIndex] = arrayOfChars[rightIndex];
+//     arrayOfChars[rightIndex] = temp;
+//     // Move towards middle
+//     leftIndex++;
+//     rightIndex--;
+//   }
+// }

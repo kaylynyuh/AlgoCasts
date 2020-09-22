@@ -12,6 +12,22 @@
 //   l.insertLast('c')
 //   midpoint(l); // returns { data: 'b' }
 
-function midpoint(list) {}
+// the concept of having a fast and a slow pointer:
+// slow pointer will always be half-way behind fast
+// so if the fast pointer sees that there is no next.next
+// then the slow pointer must be at the middle of the list
+
+function midpoint(list) {
+  if (!list.head) return;
+  let slow = list.head;
+  let fast = list.head;
+  // as soon fast.next does not exist or there is no fast.next.next
+  // the while loop will stop executing
+  while (fast.next && fast.next.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  return slow;
+}
 
 module.exports = midpoint;

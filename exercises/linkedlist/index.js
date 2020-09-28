@@ -199,13 +199,71 @@ class LinkedList {
   deleteMiddle() {
     let p1 = this.head
     let p2 = this.head.next
-    while (p2) {
+    while (p2.next) {
       p1 = p1.next
       p2 = p2.next.next
       if (!p2.next) {
         p1.next = p2.next
       }
     }
+  }
+
+  // adds new node to end of linked list
+  push(data) {  
+    let node = new Node(data);
+    let current = this.head;
+    // iterate through entire list until its been exhausted
+    while (current.next) {
+      current = current.next
+    } 
+    current.next = node
+  }
+
+  // Write a method to partition a linked list around a value val, 
+  // such that all nodes less than val come before all nodes 
+  // greater than or equal to val
+  partition(val) {
+    // create 2 linked lists, one for beforeVal,
+    // one for afterVal
+    let beforeVal = new LinkedList()
+    let afterVal = new LinkedList()
+    let p1 = this.head
+    while (p1) {
+      if (p1.data < val) {
+        beforeVal.push(p1.data)
+      } else if (p1.data >= val) {
+        afterVal.push(p1.data)
+      }
+      p1 = p1.next
+    }
+    // merge beforeVal and afterVal
+    let p2 = beforeVal.head
+    while (p2.next) {
+      p2 = p2.next
+    }
+    // where the first list ends, the second one begins
+    p2.next = afterVal.head
+    return beforeVal;
+  }
+
+  // Write a function that merges 2 sorted linked lists
+  merge(l1, l2) {
+    let merged = { val: -1, next: null } // instantiated with dummy node
+    let runner = merged;
+    while (l1 && l2) {
+      if (l1.data < l2.data) {
+        runner.next = l1.data
+        l1 = l1.next
+      } else {
+        runner.next = l2.data
+        l2 = l2.next
+      }
+    }
+    // l1 = 1->2->3, l2 = 10->20->30
+    // In that case l1, will point to null and while loop will break
+    // Simply point runner to l2. We do not have to add individual nodes
+    runner.next = l1 || l2;
+    return merged.next;
   }
 }
 

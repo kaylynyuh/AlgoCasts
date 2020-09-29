@@ -265,6 +265,49 @@ class LinkedList {
     runner.next = l1 || l2;
     return merged.next;
   }
+
+  // You have 2 numbers represented by a linked list, where
+  // each node contains a single digit. The digits are stored
+  // in reverse order such that the 1's digit is at the head
+  // of the list. Write a function that adds the two numbers
+  // and returns the sum as linked list.
+  // https://dev.to/alisabaj/add-two-numbers-problems-how-to-sum-two-linked-lists-7oe
+  sumLists(l1, l2) {
+    let list = new Node(0);
+    let currentNode = list;
+    let sum = 0; // will contain the value of adding the nodes
+    let carry = 0; // will contain any number that may need to be carried over
+    // sum > 0 is a neccessary check to account for the use case where 
+    // boths lists have been exhausted but there's still a remaining
+    // carried over digit
+    while (l1 !== null || l2 !== null || sum > 0) {
+      if (l1 !== null) {
+        sum += l1.val;
+        l1 = l1.next;
+      }
+      if (l2 !== null) {
+        sum += l2.val;
+        l2 = l2.next;
+      }
+      // Now is the point we have to deal with the possibility of a carried over number
+      // If sum is greater than or equal to 10, then there will be a carry
+      carry = Math.floor(sum / 10); // this will give us our whole number remainder
+      // For the sum, we just want what's in the ones-digit spot
+      // To single out the digit we will be adding to the result, we can use modulo
+      sum = sum % 10;
+      // Add new node to list with the value of our sum
+      currentNode.next = new Node(sum);
+      // keep traversing through the list
+      currentNode = currentNode.next;
+      // Finally, the last thing we'll want to do is move any carry value to sum, 
+      // setting carry back equal to 0. This way, when the cycle repeats for the 
+      // next node, the sum will start with any value that was carried over.
+      sum = carry;
+      carry = 0;
+    }
+  
+    return list.next;
+  }
 }
 
 module.exports = { Node, LinkedList };

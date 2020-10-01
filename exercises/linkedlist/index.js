@@ -63,6 +63,7 @@ class LinkedList {
     }    
     let previous = this.head;
     let node = this.head.next;
+    // exhaust the list until you've reached the last node
     while (node.next) {
       previous = node;
       node = node.next;
@@ -117,6 +118,17 @@ class LinkedList {
     const previous = this.getAt(index - 1) || this.getLast()
     const node = new Node(data, previous.next)
     previous.next = node
+  }
+
+  // adds new node to end of linked list
+  push(data) {  
+    let node = new Node(data);
+    let current = this.head;
+    // iterate through entire list until its been exhausted
+    while (current.next) {
+      current = current.next
+    } 
+    current.next = node
   }
 
   // remove dups in a SORTED linked list
@@ -208,15 +220,18 @@ class LinkedList {
     }
   }
 
-  // adds new node to end of linked list
-  push(data) {  
-    let node = new Node(data);
-    let current = this.head;
-    // iterate through entire list until its been exhausted
-    while (current.next) {
-      current = current.next
-    } 
-    current.next = node
+  reverse() {
+    if (!this.head || !this.head.next) return;
+    let p1 = null
+    let p2 = this.head
+    let p3
+    while (p2) {
+      p3 = p2.next
+      p2.next = p1
+      p1 = p2
+      p2 = p3
+    }
+    this.head = p1
   }
 
   // Write a method to partition a linked list around a value val, 
@@ -307,6 +322,11 @@ class LinkedList {
     }
   
     return list.next;
+  }
+
+  // Write a funtion to check if a linked list is a palindrome
+  palindrome(list) {
+
   }
 }
 

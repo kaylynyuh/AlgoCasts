@@ -20,6 +20,11 @@
 // Removal: The strings apple and aple are also one removal away,
 // since removal is just the inverse of inseration. 
 
+// There are two approaches to this problem:
+// 1) The explicit approach (use multiple methods)
+// 2) The compact approach (all in one method)
+
+// Solution #1
 function oneEditReplace(str1, str2) {
   let foundDifference = false;
   for (let i = 0; i < str1.length; i++) {
@@ -32,7 +37,6 @@ function oneEditReplace(str1, str2) {
   }
   return true
 }
-
 // Check if you can insert a character into str1 to make it str2
 function oneEditInsert(str1, str2) {
   let idx1 = 0
@@ -50,13 +54,42 @@ function oneEditInsert(str1, str2) {
   }
   return true
 }
-
 function oneAway(str1, str2) {
   if (str1.length === str2.length) { // if strings are the same length, we know this is a replacement edit
     return oneEditReplace(str1, str2)
   } else if (str1.length + 1 === str2.length) { // if str1 is one char longer than str2, than we know this is an insert edit
     return oneEditInsert(str1, str2)
   } else if (str1.length - 1 === str2.length) { // if str1 is one char shorter than str2, than we know this is a removal edit
-    return oneEditRemoval(str2, str1)
+    return oneEditInsert(str2, str1)
   }
+}
+
+// Solution #2
+function oneEditAway(first, second) {
+  // if the length differential is greater than one, 
+  // then there is no way the strings can be one edit away
+  if (first.length - second.length > 1) return false;
+
+  // Get the shorter or longer strings
+  let str1 = first.length < second.length ? first : second;
+  let str2 = first.length < second.length ? second : first;
+  let idx1 = 0;
+  let idx2 = 0;
+  let foundDifference = 0;
+  
+  while (idx2 < str2.length && idx1 < str1.length) {
+    if (str1[idx1] !== str2[idx2]) {
+      // Ensure that this is the first difference found
+      if (foundDifference) return false;
+      foundDifference = true;
+      // On replace, move the shorter pointer
+      if (str1.length === str2.length) {
+        idx1++
+      }
+    } else {
+      idx1++ // if matching, move shorter pointer
+    }
+    idx2++ // always move pointer for longer string
+  }
+  return true
 }

@@ -12,6 +12,34 @@
 
 class Node {}
 
-class Tree {}
+class Tree {
+  constructor() {
+    this.root = null;
+  }
+
+  // accepts a fn as an arg, this fn will be called
+  // on every node of the tree
+  // with BF, children are added to the end of the temp []
+  traverseBF(fn) {
+    if (!this.root) return;
+    let temp = [this.root];
+    while(temp.length) {
+      let node = temp.shift(); // shift takes out the first element of an array
+      temp.push(...node.children) // with the spread operator we are saying, taking each element of this arr and add them one by one to temp
+      fn(node);
+    }
+  }
+
+  // with DF, children are added to the beginning of the temp []
+  traverseDF(fn) {
+    if (!this.root) return;
+    let temp = [this.root];
+    while(temp.length) {
+      let node = temp.shift(); // shift takes out the first element of an array
+      temp.unshift(...node.children) // with the spread operator we are saying, taking each element of this arr and add them one by one to temp
+      fn(node);
+    }
+  }
+}
 
 module.exports = { Tree, Node };

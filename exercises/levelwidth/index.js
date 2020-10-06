@@ -11,6 +11,24 @@
 // 4       5
 // Answer: [1, 3, 2]
 
-function levelWidth(root) {}
+// typically, with any tree problems that suggest calculating
+// a width, you will want to think BFS.
+function levelWidth(root) {
+  let arr = [root, 's']; // 's' will act as the var that indicates our stopper
+  let widths = [0];
+  // greater than 1 to account for 's'
+  while(arr.length > 1) {
+    let node = arr.shift();
+    if (node === 's') { 
+      // start processing another row
+      widths.push(0)
+      arr.push('s')
+    } else {
+      arr.push(...node.children)
+      widths[widths.length - 1]++; // find the last element in widths, increment by 1
+    }
+  }
+  return widths;
+}
 
 module.exports = levelWidth;

@@ -28,7 +28,7 @@ function jumpingOnClouds(clouds) {
   // else jump 1 position away from the current cloud
   // Since you jump on both cases, you just have to increment the number 
   // of jumps by 1.
-  while (currentCloud <= clounds.length - 1) {
+  while (currentCloud < clounds.length - 1) {
     if (clouds[currentCloud + 2] === 0) {
       currentCloud += 2;
     } else {

@@ -26,8 +26,14 @@ function arrayManipulation(n, queries) {
   let maxValue = 0;
   letcurrentNumber = 0;
   queries.forEach(([startRange, endRange, value]) => {
+    // the first loop will iterate of the Zero Arr and assigned 
+    // the object literal value of {start:0, end:0} if that 
+    // position does not already contain a value, else if the 
+    // value does exist set Arr[..Range] to itself.
     arr[startRange] = arr[startRange] || { start: 0, end: 0 };
     arr[endRange] = arr[endRange] || { start: 0, end: 0 };
+    // After that, we increment the elements at position 
+    // startRange and endRange by the value.
     arr[startRange].start += value;
     arr[endRange].end += value;
    });

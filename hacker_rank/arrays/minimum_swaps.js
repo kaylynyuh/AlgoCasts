@@ -33,13 +33,20 @@
 
 function minimumSwaps(arr) {
   let count = 0;
-  for(let i =0; i< arr.length; i++){
-      if(arr[i] != i +  1){
-          let temp = arr[i];
-          arr[arr.indexOf(i + 1)] =temp;
-          arr[i] = i + 1;
-          count = count + 1;
-      }
+  for(let i = 0; i < arr.length; i++){
+   let current = arr[i];
+   let right = i + 1;
+   if (current !== right) {
+        // find the index of the right number in the array
+        // only look from the current position up passing i to indexOf
+        let rightIdx = arr.indexOf(right, i);
+        // replace the other position with this position value
+        arr[rightIdx] = arr[i];
+        // replace this position with the right number
+        arr[i] = right;
+        // increment the swap count since a swap was done
+        count++;
+    }
   }
  return count;
 }

@@ -28,7 +28,7 @@ function sherlockAndAnagrams(s) {
   const map = new Map();
   for (let i = 0; i < s.length; i++) {
       for (let j = i; j < s.length; j++) {
-          const substr = s.substring(i, j + 1);
+          const substr = s.substring(i, j + 1); // returns the part of the str between the start and end indexes
           const key = substr.split('').sort().join('');
           if (map.has(key)) {
              map.set(key, map.get(key) + 1); 

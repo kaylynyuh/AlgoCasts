@@ -1,19 +1,24 @@
 // Problem Domain: https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
 
 function activityNotifications(expenditure, d) {
+  // get the trailingExpenditures
   let trailingExpenditures = expenditure.slice(0, d);
-  console.log('trailingExpenditures', trailingExpenditures)
+  // get all other expenditures, not include trailingExpenditures
+  let expenditures = expenditure.slice(trailingExpenditures.length);
+  // instantiate the medianTrailingExpediture
   let medianTrailingExpenditure = null;
-  if (trailingExpenditures.length % 2 === 0) { // if arr is even length, get median of 2 most middle elements
+  // determine if trailingExpenditures is of even length,
+  // if it is, the medianTrailingExpenditure will be calculated
+  // by grabbing the two middle most elements and getting their average
+  if (trailingExpenditures.length % 2 === 0) {
       medianTrailingExpenditure = 
           (trailingExpenditures[trailingExpenditures.length / 2] +
           trailingExpenditures[trailingExpenditures.length / 2 - 1]) / 2;
   } else {
-      medianTrailingExpenditure =  // if arr is odd length, grab the middle most element
+      medianTrailingExpenditure = 
           trailingExpenditures[Math.floor(trailingExpenditures.length / 2)]
   }
-  console.log('medianTrailingExpenditure', medianTrailingExpenditure)
-  for (let i = 0; i < expenditure.length; i++) {
-      
+  for (let i = 0; i < expenditures.length; i++) {
+
   }
 }

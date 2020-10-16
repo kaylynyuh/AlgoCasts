@@ -3,9 +3,13 @@
 function maximumToys(prices, k) {
   let count = 0;
   let maxToys = 0;
-  for (let i = 0; i < prices.length; i++) {
+  // sort the prices from least to greatest. this will
+  // avoid a situation where the maxToys is miscalculated
+  // by numerical values that are out of chronological order
+  let sorted = prices.sort((a, b) => a - b);
+  for (let i = 0; i < sorted.length; i++) {
       if (maxToys <= k) {
-          maxToys = maxToys + prices[i];
+          maxToys += prices[i];
           count++;
       }
   }

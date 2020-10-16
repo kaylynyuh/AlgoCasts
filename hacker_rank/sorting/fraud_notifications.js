@@ -10,6 +10,7 @@ function activityNotifications(expenditure, d) {
   // determine if trailingExpenditures is of even length,
   // if it is, the medianTrailingExpenditure will be calculated
   // by grabbing the two middle most elements and getting their average
+  let notificationsCount = 0;
   if (trailingExpenditures.length % 2 === 0) {
       medianTrailingExpenditure = 
           (trailingExpenditures[trailingExpenditures.length / 2] +
@@ -19,6 +20,9 @@ function activityNotifications(expenditure, d) {
           trailingExpenditures[Math.floor(trailingExpenditures.length / 2)]
   }
   for (let i = 0; i < expenditures.length; i++) {
-
+    if (expenditures[i] % medianTrailingExpenditure === 0) {
+      notificationsCount++;
+    }
   }
+  return notificationsCount;
 }

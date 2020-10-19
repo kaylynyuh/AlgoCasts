@@ -17,6 +17,8 @@ function diagonalDifference(arr) {
       }
     }
   }
+  
   console.log('diagonalFirst', diagonalFirst)
   console.log('diagonalSecond', diagonalSecond)
+  // return Math.abs(diagonalFirst - diagonalSecond);
 }

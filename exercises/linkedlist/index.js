@@ -354,6 +354,8 @@ class LinkedList {
     return (l1 === l2) ? 1 : 0;
   }
 
+  // Write a funciton that returns a node 
+  // at x positions from the tail
   positionFromTail(head, positionFromTail) {
     if (!head) return null;
     let current = head;

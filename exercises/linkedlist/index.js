@@ -234,6 +234,23 @@ class LinkedList {
     this.head = p1
   }
 
+  // easier to understand reverse solution
+  reverse(head) {
+    let node = head;
+    let previous = null;
+    let tmp = null;
+    while (node) {
+        // save next before we overwrite node.next!
+        tmp = node.next;
+        // reverse pointer
+        node.next = previous;
+        // step forward in the list
+        previous = node;
+        node = tmp;
+    }
+    return previous;
+  }
+
   // Write a method to partition a linked list around a value val, 
   // such that all nodes less than val come before all nodes 
   // greater than or equal to val
@@ -324,9 +341,33 @@ class LinkedList {
     return list.next;
   }
 
-  // Write a funtion to check if a linked list is a palindrome
-  palindrome(list) {
+  // Write a function to compare the data in the nodes of the linked lists 
+  // to check if they are equal. If all data attributes are equal and the 
+  //lists are the same length, return 1. Otherwise, return 0.
+  compareLists(l1, l2) {
+    while ((l1 && l2) && (l1.data === l2.data)) {
+        if (l1.data === l2.data) {
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+    }
+    return (l1 === l2) ? 1 : 0;
+  }
 
+  positionFromTail(head, positionFromTail) {
+    if (!head) return null;
+    let current = head;
+    let runner = head;
+    /* Move runner into the list by k elements */
+    for (let i = 0; i < positionFromTail; i++) {
+      runner = runner.next;
+    }
+    /* Move both pointers */
+    while (runner.next) {
+      current = current.next;
+      runner = runner.next;
+    }
+    return current.data;
   }
 }
 

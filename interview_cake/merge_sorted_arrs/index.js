@@ -27,7 +27,9 @@ function mergeSortedArrays(arr1, arr2) {
       merged[currentIdxMerged] = arr2[currentArr2];
       currentArr2++;
     }
+    currentIdxMerged++;
   }
+  return merged;
 }
 
 export default mergeSortedArrays;

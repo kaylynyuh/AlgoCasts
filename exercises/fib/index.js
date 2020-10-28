@@ -34,31 +34,31 @@ function fib(n) {
 // running the function again)
 //
 // Original function:
-// function fib(n) {
-//   if (n < 2) {
-//     return n;
-//   }
-//   return fib(n - 1) + fib(n - 2);
-// }
-//
+function fib(n) {
+  if (n < 2) {
+    return n;
+  }
+  return fib(n - 1) + fib(n - 2);
+}
+
 // Memoized Helper function:
-// function memoize(fn) {
-//   const cache = {};
-//   // ...args says "I don't know how many arguments will be called
-//   // with this function so just take all of them put them in an array
-//   // and assign to args"
-//   return function(...args) {
-//     // check if the function has ever been called with these arguments
-//     // if it has, just return the value outright instead of making another
-//     // function call
-//     if (cache[args]) {
-//       return cache[args];
-//     };
-//     const result = fn.apply(this, args); // use apply since the fn was called with an array of args
-//     cache[args] = result; // create a key in the cache with the argument whose value is the result ^
-//     return result;
-//   };
-// }
-// fib = memoize(fib)
+function memoize(fn) {
+  const cache = {};
+  // ...args says "I don't know how many arguments will be called
+  // with this function so just take all of them put them in an array
+  // and assign to args"
+  return function(...args) {
+    // check if the function has ever been called with these arguments
+    // if it has, just return the value outright instead of making another
+    // function call
+    if (cache[args]) {
+      return cache[args];
+    };
+    const result = fn.apply(this, args); // use apply since the fn was called with an array of args
+    cache[args] = result; // create a key in the cache with the argument whose value is the result ^
+    return result;
+  };
+}
+fib = memoize(fib)
 
 module.exports = fib;

@@ -12,11 +12,11 @@
 // The next line contains n space-seperated integers arr[i].
 
 function countTriplets(arr, r) {
-  let temp = [];
-  for (let i = 0; i <= arr.length; i++) {
-      if (arr[i] % r === 0 && !temp.includes(arr[i])) {
-          temp.push(arr[i]);
+  let progressions = [];
+  for (let num = 0; num < arr.length; num++) {
+      if (arr[num] % r === 0) {
+        progressions.push(arr[num]);
       }
   }
-  return temp.length;
+  console.log(progressions)
 }

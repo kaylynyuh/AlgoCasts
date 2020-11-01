@@ -11,12 +11,17 @@
 // The first line contains two space-separated integers n and r, the size of arr and the common ratio.
 // The next line contains n space-seperated integers arr[i].
 
-function countTriplets(arr, r) {
-  let progressions = [];
-  for (let num = 0; num < arr.length; num++) {
-      if (arr[num] % r === 0) {
-        progressions.push(arr[num]);
-      }
-  }
-  console.log(progressions)
+function countTriplets(arr, ratio) {
+  let totalCount = 0;
+  const possibilities = {};
+  const combos = {};
+  // if it already exists in combos, increment
+  arr.forEach((number) => {
+      totalCount += (combos[number] || 0);
+      const nextNumber = number * ratio;
+      combos[nextNumber] = (combos[nextNumber] || 0) + (possibilities[number] || 0);
+      possibilities[nextNumber] = (possibilities[nextNumber] || 0) + 1;
+  })
+
+  return totalCount;
 }

@@ -11,10 +11,10 @@ function chessBoard(n) {
       } else {
         board += '#';
       }
-      board += '\n';
     }
-    console.log(board);
+    board += '\n';
   }
+  console.log(board);
 }
 
 module.exports = chessBoard;

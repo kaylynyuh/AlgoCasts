@@ -19,6 +19,8 @@ function levelWidth(root) {
   // greater than 1 to account for 's'
   while(arr.length > 1) {
     let node = arr.shift();
+    // if node === 's' we know we have reached the end of that row, reset the counter
+    // and reposition 's' to be at the beginning of the array again 
     if (node === 's') { 
       // start processing another row
       widths.push(0)
